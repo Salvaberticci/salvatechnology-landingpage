@@ -1,0 +1,7 @@
+# Redirection removed to prevent local loops
+DirectoryIndex index.html index.php
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]

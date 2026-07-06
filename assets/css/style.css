@@ -1,0 +1,1107 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #000000;
+    /* Negro puro */
+    --secondary-color: #1a1a1a;
+    /* Gris muy oscuro */
+    --accent-color: #ff6600;
+    /* Naranja Salvetech */
+    --text-color: #eee;
+    --light-text-color: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    /* Ajuste para un toque más tecnológico */
+    color: var(--light-text-color);
+    /* Texto claro para todo el cuerpo */
+    background-color: var(--primary-color);
+    /* Fondo oscuro para las partículas */
+    position: relative;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+#matrix-canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    /* Behind content */
+    background-color: #000000;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /* Behind nodes */
+    background-image:
+        linear-gradient(0deg, rgba(255, 102, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 102, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    /* Tamaño de la cuadrícula */
+    animation: grid-pulse 10s infinite linear;
+    mix-blend-mode: overlay;
+    /* Para un efecto de mezcla con las partículas */
+    pointer-events: none;
+}
+
+@keyframes grid-pulse {
+    0% {
+        background-position: 0 0;
+        opacity: 0.1;
+    }
+
+    50% {
+        background-position: 50px 50px;
+        opacity: 0.2;
+    }
+
+    100% {
+        background-position: 100px 100px;
+        opacity: 0.1;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Wave styles removed */
+
+/* El contenido principal debe tener un z-index mayor para ser visible */
+#header,
+#hero-intro,
+#clientes,
+#sobre-mi,
+#servicios,
+#resultados,
+#beneficios,
+#planes,
+#cta-final,
+#faq,
+#footer {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 40px 0;
+    /* Ajuste del padding vertical para reducir el margen entre secciones */
+}
+
+/* Alternating Section Colors */
+section:nth-of-type(even) {
+    background-color: transparent;
+    /* Fondo transparente para ver las partículas/rejilla */
+    color: var(--light-text-color);
+}
+
+section:nth-of-type(even) h2,
+section:nth-of-type(even),
+section:nth-of-type(even) p,
+section:nth-of-type(even) li {
+    color: var(--light-text-color);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Space Mono', monospace;
+    /* Usar Space Mono para títulos */
+    font-weight: 700;
+    color: var(--accent-color);
+    /* Color de acento para títulos */
+    text-shadow: 0 0 8px rgba(255, 102, 0, 0.7), 0 0 15px rgba(255, 102, 0, 0.4);
+    /* Efecto neón naranja */
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+h2 {
+    margin-bottom: 40px;
+    text-align: center;
+    opacity: 1;
+    /* Ensure titles are visible by default */
+}
+
+h3 {
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: var(--light-text-color);
+    text-shadow: 0 0 3px rgba(255, 102, 0, 0.2);
+}
+
+/* Header */
+#header {
+
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 40px 0;
+}
+
+.logo img {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+#header h1 {
+    color: var(--light-text-color);
+    max-width: 900px;
+    margin: 0 auto;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    /* Efecto de brillo sutil */
+}
+
+/* Hero Intro */
+#hero-intro {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#hero-intro .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    justify-items: center;
+    padding: 20px;
+    /* Padding generoso */
+}
+
+#hero-intro .subheadline {
+    max-width: 800px;
+    text-align: center;
+}
+
+.visual {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio for YouTube videos */
+    border-radius: 15px;
+    /* Bordes ligeramente redondeados */
+    overflow: hidden;
+    /* Asegura que el video respete el border-radius */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Sombra para efecto premium */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+    background-color: rgba(255, 102, 0, 0.05);
+    /* Fondo semitransparente */
+}
+
+.visual iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.subheadline {
+    font-size: 1.5em;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    color: var(--light-text-color);
+    /* Texto claro para subheadline */
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(255, 102, 0, 0.3);
+    /* Efecto de brillo sutil */
+}
+
+.benefits ul {
+    list-style: none;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: inline-block;
+    text-align: left;
+}
+
+.benefits li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.visual img {
+    max-width: 100%;
+    height: auto;
+    margin: 40px 0;
+    border-radius: var(--border-radius);
+}
+
+.cta-button {
+    margin-top: 50px;
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.4s ease-in-out;
+    /* Transición más suave */
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+}
+
+/* Additional margin for CTA buttons after card sections */
+#servicios .cta-button,
+#beneficios .cta-button {
+    margin-top: 80px;
+}
+
+.cta-button:hover {
+    background-color: #e65c00;
+    transform: translateY(-5px) scale(1.05);
+    /* Más pronunciado */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.8), 0 0 50px rgba(255, 102, 0, 0.5);
+    /* Brillo más intenso */
+}
+
+/* Sections */
+.benefits-list {
+    list-style: none;
+    margin: 30px 0;
+    font-size: 1.1em;
+}
+
+.benefits-list li {
+    margin-bottom: 15px;
+}
+
+ol {
+    margin: 30px 0 30px 20px;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    opacity: 0.9;
+}
+
+/* Clientes Section */
+.testimonial-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Fondo semitransparente */
+    color: var(--light-text-color);
+    /* Texto claro para tarjetas */
+    padding: 40px;
+    border-radius: 20px;
+    /* Bordes más redondeados */
+    margin-bottom: 40px;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    /* Efecto de brillo */
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    /* Borde sutil */
+    text-align: left;
+    transition: all 0.3s ease;
+    /* Para animaciones de hover */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+}
+
+#clientes .testimonial-card h3,
+#clientes .testimonial-card p {
+    color: var(--light-text-color);
+    /* Asegurar texto claro dentro de la tarjeta */
+}
+
+#clientes .testimonial-card h3 {
+    color: var(--accent-color);
+    /* Título con color de acento */
+}
+
+.testimonial-video {
+    flex: 0 0 40%;
+}
+
+.testimonial-video video {
+    width: 100%;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+.testimonial-info {
+    flex: 1 1 auto;
+}
+
+/* Prueba Social */
+.cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.case {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s;
+}
+
+.case:hover {
+    transform: translateY(-5px);
+}
+
+/* Sobre Mí */
+#sobre-mi {
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+.about-me-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-me-info {
+    flex: 1 1 60%;
+}
+
+.about-me-info h2 {
+    /* text-align: left; */
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.about-me-info h3 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.about-me-info .handle {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-me-image {
+    flex: 1 1 40%;
+}
+
+.about-me-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    /* Efecto de brillo */
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    /* Borde sutil */
+}
+
+/* Servicios Section */
+#servicios {
+    text-align: center;
+    background-color: transparent;
+    /* Fondo transparente para que se vean las partículas */
+}
+
+#servicios h2,
+#servicios h3,
+#servicios p {
+    color: var(--light-text-color);
+    /* Texto claro para esta sección */
+}
+
+#servicios h2 .highlight {
+    color: var(--accent-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.service-card {
+    background-color: rgba(0, 31, 84, 0.5);
+    /* Fondo semitransparente del color primario */
+    padding: 40px 30px;
+    border-radius: 20px;
+    /* Bordes más redondeados */
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Para animaciones de hover */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    /* Efecto de brillo */
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    /* Borde sutil */
+    position: relative;
+    /* Para pseudo-elemento */
+    overflow: hidden;
+    /* Para el efecto de brillo */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid var(--accent-color);
+    /* Borde de acento */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.service-card:hover::before {
+    opacity: 0.4;
+}
+
+/* Efecto de brillo al pasar el ratón */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 102, 0, 0.3) 0%, transparent 70%);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+    transform: rotate(45deg) translate(20%, 20%);
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* Más pronunciado */
+    box-shadow: 0 0 35px rgba(255, 102, 0, 0.3), 0 0 70px rgba(255, 102, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    /* Usar azul eléctrico */
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    /* Título con color de acento */
+}
+
+.service-card p {
+    color: var(--light-text-color);
+    /* Texto claro */
+}
+
+/* Resultados Section */
+#resultados {
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+#resultados h2,
+#resultados p {
+    color: var(--light-text-color);
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.results-text {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.results-text h2 {
+    /* text-align: left; */
+    font-size: 2.8em;
+    line-height: 1.4;
+    margin-bottom: 50px;
+}
+
+.results-text p {
+    line-height: 2.0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.results-text ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto 30px;
+}
+
+.results-cta {
+    display: inline-block;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+/* Beneficios Section */
+#beneficios {
+    text-align: center;
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+#beneficios h2,
+#beneficios p {
+    color: var(--light-text-color);
+    /* Texto claro */
+}
+
+#beneficios h2 .highlight {
+    color: var(--accent-color);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.benefit-card {
+    background-color: rgba(0, 31, 84, 0.5);
+    /* Fondo semitransparente del color primario */
+    padding: 40px 30px;
+    border-radius: 20px;
+    /* Bordes más redondeados */
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Para animaciones de hover */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    /* Efecto de brillo */
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    /* Borde sutil */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* Más pronunciado */
+    box-shadow: 0 0 35px rgba(255, 102, 0, 0.3), 0 0 70px rgba(255, 102, 0, 0.2);
+}
+
+.benefit-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    /* Título con color de acento */
+}
+
+.benefit-card p {
+    color: var(--light-text-color);
+    /* Texto claro */
+}
+
+.module {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.module:hover {
+    transform: translateY(-5px);
+}
+
+/* Servicios Section */
+#servicios h2 {
+    margin-bottom: 60px;
+}
+
+/* ===== Pricing / Planes Section ===== */
+#planes {
+    text-align: center;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.plan-card {
+    background-color: rgba(0, 31, 84, 0.5);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plan-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 102, 0, 0.3), 0 0 70px rgba(255, 102, 0, 0.2);
+}
+
+.plan-card.recommended {
+    border-color: var(--accent-color);
+    border-width: 2px;
+    position: relative;
+}
+
+.plan-card.recommended::before {
+    content: 'RECOMENDADO';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: 'Space Mono', monospace;
+}
+
+.plan-name {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.plan-price {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2.8em;
+    color: var(--light-text-color);
+    margin-bottom: 5px;
+    text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+}
+
+.plan-price span {
+    font-size: 0.4em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.plan-period {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+}
+
+.plan-savings {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85em;
+    color: #4ade80;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.plan-description {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.plan-cta {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+    margin-top: auto;
+}
+
+.plan-cta:hover {
+    background-color: #e65c00;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.8);
+}
+
+/* ===== WhatsApp Form ===== */
+#whatsapp-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: rgba(0, 31, 84, 0.5);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+#whatsapp-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--light-text-color);
+}
+
+#whatsapp-form input,
+#whatsapp-form textarea,
+#whatsapp-form select {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 102, 0, 0.1);
+    color: var(--light-text-color);
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+#whatsapp-form input:focus,
+#whatsapp-form textarea:focus,
+#whatsapp-form select:focus {
+    outline: none;
+    border-color: #ff8833;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+}
+
+#whatsapp-form select option {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+#whatsapp-form button {
+    width: 100%;
+    background-color: #25D366;
+    color: #fff;
+    padding: 18px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    font-weight: bold;
+}
+
+#whatsapp-form button:hover {
+    background-color: #1da851;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+}
+
+#whatsapp-form button i {
+    margin-right: 10px;
+}
+
+/* ===== Dinámica de Clases ===== */
+.dinamica-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.dinamica-card {
+    background-color: rgba(0, 31, 84, 0.5);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.dinamica-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(255, 102, 0, 0.3);
+}
+
+.dinamica-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.dinamica-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.dinamica-card p {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+}
+
+/* ===== Media Queries for new sections ===== */
+@media (max-width: 1023px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dinamica-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-price {
+        font-size: 2.2em;
+    }
+}
+
+/* FAQ Section */
+#faq {
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+#faq h2 {
+    margin-bottom: 60px;
+}
+
+#faq h3,
+#faq p {
+    color: var(--light-text-color);
+    /* Texto claro */
+}
+
+/* CTA Final */
+#cta-final {
+    text-align: center;
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+#cta-final h2 {
+    color: var(--light-text-color);
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: rgba(0, 31, 84, 0.5);
+    /* Fondo semitransparente del color primario */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+}
+
+#contact-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--light-text-color);
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+    border: 1px solid var(--accent-color);
+    /* Borde de acento */
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 102, 0, 0.1);
+    /* Fondo semitransparente naranja */
+    color: var(--light-text-color);
+    font-family: 'Lato', sans-serif;
+}
+
+#contact-form button {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    padding: 18px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    /* Transición más suave */
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+}
+
+#contact-form button:hover {
+    background-color: #e65c00;
+    transform: translateY(-5px) scale(1.05);
+    /* Más pronunciado */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.8), 0 0 50px rgba(255, 102, 0, 0.5);
+    /* Brillo más intenso */
+}
+
+/* FAQ */
+.faq-item {
+    margin-bottom: 20px;
+    background-color: rgba(0, 31, 84, 0.5);
+    /* Fondo semitransparente del color primario */
+    padding: 25px;
+    border-radius: 20px;
+    /* Bordes más redondeados */
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.15), 0 0 50px rgba(255, 102, 0, 0.1);
+    /* Efecto de brillo */
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    /* Borde sutil */
+    transition: all 0.3s ease;
+    /* Para animaciones de hover */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    /* Título con color de acento */
+}
+
+/* Footer */
+#footer {
+    color: var(--light-text-color);
+    padding: 40px 0;
+    margin-top: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 767px) {
+    #header h1 {
+        font-size: 2em;
+        /* Ajuste para móviles */
+        line-height: 1.1;
+        /* Interlineado más ajustado */
+    }
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+
+/* Scroll Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    /* Animación más rápida */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
