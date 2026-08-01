@@ -400,30 +400,10 @@
         <div class="container">
             <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight">¿Listo para empezar tu camino como AI-Driven Developer?
             </h2>
-            <p class="section-subtitle mt-8 text-center">El registro en la academia es <strong>100% gratuito</strong>. Solo entra a <a href="https://academy.salvatechnology.online" style="color: var(--accent-color); text-decoration: underline;">academy.salvatechnology.online</a> y crea tu cuenta: tendrás acceso a cursos gratuitos sin pagar nada. Dentro de la plataforma encontrarás también cursos premium que se desbloquean con un plan de suscripción — puedes optar por uno cuando lo decidas.</p>
-            <form id="whatsapp-form" onsubmit="sendToWhatsApp(event)">
-                <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" required placeholder="tu@correo.com">
-
-                <label for="telefono">Teléfono (con código de país)</label>
-                <input type="tel" id="telefono" name="telefono" required placeholder="+58 412 123 4567">
-
-                <label for="plan">Plan de interés</label>
-                <select id="plan" name="plan">
-                    <option value="1 Mes - $40">1 Mes - $40</option>
-                    <option value="3 Meses - $110" selected>3 Meses - $110</option>
-                    <option value="6 Meses - $190">6 Meses - $190 (Recomendado)</option>
-                    <option value="1 Año - $380">1 Año - $380</option>
-                </select>
-
-                <label for="mensaje">¿Qué quieres aprender y qué sabes ya?</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Escribe exactamente qué quieres aprender con la metodología ADD y qué conocimientos previos tienes (programación, lógica, etc.)..."></textarea>
-
-                <button type="submit"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
-            </form>
+            <p class="section-subtitle mt-8 text-center">El registro en la academia es <strong>100% gratuito</strong>. Regístrate directamente en la plataforma y tendrás acceso a cursos gratuitos sin pagar nada. Dentro encontrarás también cursos premium que se desbloquean con un plan de suscripción — puedes optar por uno cuando lo decidas.</p>
+            <div class="text-center" style="margin-top: 10px;">
+                <a href="https://academy.salvatechnology.online" class="cta-button">Registrarme en la Academia</a>
+            </div>
         </div>
     </section>
 
@@ -474,26 +454,6 @@
         </div>
     </section>
 
-    <script>
-        function sendToWhatsApp(event) {
-            event.preventDefault();
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-            const plan = document.getElementById('plan').value;
-            const mensaje = document.getElementById('mensaje').value.trim();
-
-            const texto = 'Hola Salvatore, ' +
-                'Soy *' + nombre + '* ' +
-                ' | Email: ' + email +
-                ' | Tel: ' + telefono +
-                ' | Plan: *' + plan + '*' +
-                (mensaje ? ' | Mensaje: ' + mensaje : '') +
-                ' | Quiero empezar mi camino como AI-Driven Developer.';
-
-            window.open('https://wa.me/584221019211?text=' + encodeURIComponent(texto), '_blank');
-        }
-    </script>
     <script src="assets/js/main.js"></script>
 
 
